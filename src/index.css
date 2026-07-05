@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by the ThemeProvider's .dark class, not the OS media query */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --radius-theme: var(--radius);
+}
+
+/*
+  Each theme uses an analogous hue spread (60deg total) instead of one flat hue:
+  background = base, foreground = base-15, primary = base-30, accent = base+30, accent-foreground = base+15.
+  Primary/accent chroma is bumped slightly above the original so the hue shift actually reads
+  against the mostly-neutral background/foreground/card surfaces.
+*/
+
+:root {
+  /* Yellow Light Default (base hue 80) */
+  --background: oklch(0.99 0.02 80);
+  --foreground: oklch(0.3 0.05 65);
+  --primary: oklch(0.85 0.13 50);
+  --primary-foreground: oklch(0.2 0.05 65);
+  --accent: oklch(0.9 0.07 110);
+  --accent-foreground: oklch(0.4 0.1 95);
+  --card: oklch(0.97 0.02 80 / 0.7);
+  --card-foreground: oklch(0.3 0.05 65);
+  --radius: 1rem;
+}
+
+[data-theme="green"] {
+  /* base hue 150 */
+  --background: oklch(0.98 0.03 150);
+  --foreground: oklch(0.3 0.05 135);
+  --primary: oklch(0.7 0.13 120);
+  --primary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.88 0.07 180);
+  --accent-foreground: oklch(0.4 0.1 165);
+  --card: oklch(0.96 0.025 150 / 0.7);
+  --card-foreground: oklch(0.3 0.05 135);
+}
+
+[data-theme="light-blue"] {
+  /* base hue 220 */
+  --background: oklch(0.98 0.03 220);
+  --foreground: oklch(0.3 0.05 205);
+  --primary: oklch(0.7 0.13 190);
+  --primary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.88 0.07 250);
+  --accent-foreground: oklch(0.4 0.1 235);
+  --card: oklch(0.96 0.025 220 / 0.7);
+  --card-foreground: oklch(0.3 0.05 205);
+}
+
+[data-theme="pink"] {
+  /* base hue 40 */
+  --background: oklch(0.97 0.04 40);
+  --foreground: oklch(0.3 0.08 25);
+  --primary: oklch(0.7 0.18 10);
+  --primary-foreground: oklch(1 0 0);
+  --accent: oklch(0.88 0.1 70);
+  --accent-foreground: oklch(0.4 0.1 55);
+  --card: oklch(0.95 0.03 40 / 0.6);
+  --card-foreground: oklch(0.3 0.08 25);
+}
+
+.dark {
+  /* Gray Dark Default (base hue 200) */
+  --background: oklch(0.15 0.02 200);
+  --foreground: oklch(0.98 0 0);
+  --primary: oklch(0.6 0.13 170);
+  --primary-foreground: oklch(1 0 0);
+  --accent: oklch(0.25 0.07 230);
+  --accent-foreground: oklch(0.9 0.1 215);
+  --card: oklch(0.2 0.03 200 / 0.5);
+  --card-foreground: oklch(0.98 0 0);
+}
+
+.dark[data-theme="purple"] {
+  /* base hue 300 */
+  --background: oklch(0.12 0.04 300);
+  --foreground: oklch(0.9 0.05 285);
+  --primary: oklch(0.6 0.18 270);
+  --primary-foreground: oklch(0.1 0.05 285);
+  --accent: oklch(0.22 0.07 330);
+  --accent-foreground: oklch(0.8 0.1 315);
+  --card: oklch(0.15 0.045 300 / 0.5);
+  --card-foreground: oklch(0.9 0.05 285);
+}
+
+.dark[data-theme="dark-blue"] {
+  /* base hue 240 */
+  --background: oklch(0.12 0.03 240);
+  --foreground: oklch(0.9 0.01 225);
+  --primary: oklch(0.45 0.13 210);
+  --primary-foreground: oklch(0.9 0.01 225);
+  --accent: oklch(0.22 0.07 270);
+  --accent-foreground: oklch(0.8 0.03 255);
+  --card: oklch(0.15 0.045 240 / 0.4);
+  --card-foreground: oklch(0.9 0.01 225);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Custom minimal scrollbar for widgets */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  /* scrollbar pseudo-elements ignore opacity, so the alpha lives in the color */
+  background: color-mix(in oklab, var(--primary) 40%, transparent);
+  border-radius: 4px;
+}
