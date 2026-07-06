@@ -68,9 +68,26 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 text-sm text-foreground/50">
-          <span>&copy; {new Date().getFullYear()} Serenify. Designed for a calmer workday.</span>
+          <span>
+            &copy; {new Date().getFullYear()} Serenify. Designed for a calmer workday. Built by{" "}
+            <a
+              href="https://portfolio.jamilharun.workers.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 underline underline-offset-4 decoration-primary/40 hover:text-foreground hover:decoration-primary transition-colors"
+            >
+              Jamil Harun
+            </a>
+            .
+          </span>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-foreground transition-colors" title="Website">
+            <a
+              href="https://portfolio.jamilharun.workers.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+              title="Portfolio"
+            >
               <Globe className="w-4 h-4" />
             </a>
             <a href="#" className="hover:text-foreground transition-colors" title="Contact">

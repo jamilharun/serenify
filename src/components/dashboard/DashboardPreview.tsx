@@ -29,7 +29,7 @@ const VIEWS = ["mail", "analytics", "projects", "settings"] as const
 type View = (typeof VIEWS)[number]
 
 const FOLDERS: Folder[] = ["inbox", "sent", "drafts", "archive"]
-const PANE_HEIGHT = "h-[560px] lg:h-[680px]"
+const PANE_HEIGHT = "h-[420px] sm:h-[560px] lg:h-[680px]"
 
 export function DashboardPreview() {
   const mockupRef = useRef<HTMLDivElement>(null)
