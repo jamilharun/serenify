@@ -8,14 +8,13 @@ const CSP = [
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
-  "frame-ancestors 'none'",
+  "frame-ancestors 'self' https://portfolio.jamilharun.workers.dev",
   "upgrade-insecure-requests",
 ].join("; ")
 
 const SECURITY_HEADERS: Record<string, string> = {
   "Content-Security-Policy": CSP,
   "X-Content-Type-Options": "nosniff",
-  "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
