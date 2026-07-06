@@ -55,6 +55,7 @@ export function DashboardPreview() {
   }, [todos])
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const mockup = mockupRef.current
     if (!mockup) return
 
@@ -78,10 +79,8 @@ export function DashboardPreview() {
     const trigger = ScrollTrigger.create({
       trigger: mockup,
       start: "top 85%",
-      end: "top 20%",
+      end: "top 25%",
       scrub: true,
-      pin: true,
-      pinSpacing: true,
       animation: tween,
     })
 
@@ -116,7 +115,7 @@ export function DashboardPreview() {
   }
 
   return (
-    <section id="dashboard-mockup" className="relative z-20 px-6 md:px-16 pt-8 pb-32">
+    <section id="dashboard-mockup" className="relative z-20 px-6 md:px-16 pt-8 pb-32 scroll-mt-20">
       <div
         ref={mockupRef}
         className="max-w-6xl mx-auto bg-card/50 backdrop-blur-2xl border border-primary/10 rounded-[2rem] shadow-2xl overflow-hidden"

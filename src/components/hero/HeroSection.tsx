@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { useTheme, type LightVariant, type DarkVariant } from "../theme/theme-context"
 import { buttonClasses } from "../ui/buttonStyles"
+import { HeroDashboardPeek } from "./HeroDashboardPeek"
 
 const backgrounds: Record<LightVariant | DarkVariant, string> = {
   "yellow": "url('/images/bg_sunday_morning.avif')",
@@ -9,7 +10,8 @@ const backgrounds: Record<LightVariant | DarkVariant, string> = {
   "pink": "url('/images/bg_sunset.avif')",
   "gray": "url('/images/bg_stress_free.avif')",
   "purple": "url('/images/bg_hyper_focus.avif')",
-  "dark-blue": "url('/images/bg_calming_rain.avif')"
+  "dark-blue": "url('/images/bg_calming_rain.avif')",
+  "forest": "url('/images/bg_midnight_forest.avif')"
 }
 
 export function HeroSection() {
@@ -43,20 +45,27 @@ export function HeroSection() {
           transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
           className="flex flex-col items-start text-left"
         >
-          <h1 className="text-6xl md:text-[6rem] leading-[1.05] tracking-tight text-foreground drop-shadow-2xl mb-6 font-bold">
+          <h1 className="font-display text-6xl md:text-[6rem] leading-[1.05] tracking-tight text-foreground drop-shadow-2xl mb-6 font-semibold">
             Find your flow.
             <br />
-            <span className="font-extralight text-foreground/80">Calm your inbox.</span>
+            <span className="font-normal italic text-foreground/80">Calm your inbox.</span>
           </h1>
           <p className="text-xl md:text-2xl text-foreground/70 max-w-xl font-light tracking-wide drop-shadow-md mb-8">
             Serenify blends your email and your headspace into one beautifully calm dashboard.
           </p>
 
-          <a href="#dashboard-mockup" className={buttonClasses("primary", "lg", "shadow-lg")}>
-            Get Started
-          </a>
+          <div className="flex flex-wrap items-center gap-4">
+            <a href="#dashboard-mockup" className={buttonClasses("primary", "lg", "shadow-lg")}>
+              Try the live demo
+            </a>
+            <a href="#waitlist" className={buttonClasses("ghost", "lg", "text-foreground/80")}>
+              Join the waitlist
+            </a>
+          </div>
         </motion.div>
       </div>
+
+      <HeroDashboardPeek />
     </div>
   )
 }

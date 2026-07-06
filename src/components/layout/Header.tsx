@@ -2,8 +2,10 @@ import { motion } from "framer-motion"
 import { buttonClasses } from "../ui/buttonStyles"
 
 const NAV_LINKS = [
+  { label: "Demo", href: "#dashboard-mockup" },
+  { label: "Themes", href: "#themes" },
+  { label: "How it works", href: "#how-it-works" },
   { label: "Features", href: "#features" },
-  { label: "Components", href: "#components" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ]
@@ -16,7 +18,9 @@ export function Header() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-4 flex justify-between items-center bg-card/30 backdrop-blur-xl border-b border-primary/10"
     >
-      <a href="#top" className="text-foreground font-semibold tracking-wide">Serenify</a>
+      <a href="#top" className="text-foreground font-semibold tracking-wide">
+        Serenify
+      </a>
 
       <nav className="hidden md:flex items-center gap-1">
         {NAV_LINKS.map((link) => (
@@ -30,8 +34,8 @@ export function Header() {
         ))}
       </nav>
 
-      <a href="#dashboard-mockup" className={buttonClasses("primary", "sm", "rounded-full")}>
-        Get Started
+      <a href="#waitlist" className={buttonClasses("primary", "sm", "rounded-full")}>
+        Join the waitlist
       </a>
     </motion.header>
   )

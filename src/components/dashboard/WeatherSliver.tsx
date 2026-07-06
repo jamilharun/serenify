@@ -1,4 +1,4 @@
-import { Sun, CloudSun, Sunset, Cloud, CloudMoon, CloudRain } from "lucide-react"
+import { Sun, CloudSun, Sunset, Cloud, CloudMoon, CloudRain, Sparkles } from "lucide-react"
 import { useTheme } from "../theme/theme-context"
 import type { LightVariant, DarkVariant } from "../theme/theme-context"
 import { Card } from "../ui/Card"
@@ -11,6 +11,7 @@ const WEATHER_BY_VARIANT: Record<LightVariant | DarkVariant, { icon: typeof Sun;
   gray: { icon: Cloud, temp: "64°F", condition: "Calm & Overcast" },
   purple: { icon: CloudMoon, temp: "66°F", condition: "Quiet Night" },
   "dark-blue": { icon: CloudRain, temp: "60°F", condition: "Light Rain" },
+  forest: { icon: Sparkles, temp: "62°F", condition: "Still Night" },
 }
 
 export function WeatherSliver() {

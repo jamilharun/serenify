@@ -2,7 +2,7 @@ import { createContext, useContext } from "react"
 
 export const THEME_MODES = ["dark", "light", "system"] as const
 export const LIGHT_VARIANTS = ["yellow", "green", "light-blue", "pink"] as const
-export const DARK_VARIANTS = ["gray", "purple", "dark-blue"] as const
+export const DARK_VARIANTS = ["gray", "purple", "dark-blue", "forest"] as const
 
 export type ThemeMode = (typeof THEME_MODES)[number]
 export type LightVariant = (typeof LIGHT_VARIANTS)[number]

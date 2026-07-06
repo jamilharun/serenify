@@ -4,7 +4,7 @@ A calm, mood-themed landing page with a fully interactive dashboard mockup. Sere
 
 ## Features
 
-- **7 mood themes** — 4 light (Sunday Morning, Matcha, Clear Sky, Sunset) and 3 dark (Stress Free, Hyper Focus, Calming Rain). Each theme is an analogous OKLCH hue spread, so every surface, button, and accent re-tints live when you switch. Follows the OS theme by default and reacts to OS theme changes.
+- **8 mood themes** — 4 light (Sunday Morning, Matcha, Clear Sky, Sunset) and 4 dark (Stress Free, Hyper Focus, Calming Rain, Midnight Forest). Each theme is an analogous OKLCH hue spread, so every surface, button, and accent re-tints live when you switch. Follows the OS theme by default and reacts to OS theme changes.
 - **Interactive dashboard preview** — a working mail client mockup with folders, a reading pane, compose modal, analytics widgets (stats, weather, mood check-in, todos), projects, and settings. Todos and mood persist in `localStorage`.
 - **Responsive** — the dashboard collapses to a phone-friendly layout below `lg` (folder chips instead of a sidebar, overlay reading pane).
 - **Scroll choreography** — GSAP ScrollTrigger pins and unfolds the dashboard mockup; Framer Motion handles everything else (entrances, crossfades, layout animations).
@@ -31,14 +31,14 @@ npm run lint      # eslint
 ```
 src/
 ├── components/
-│   ├── ui/          # shared primitives: Card, Button (+ buttonStyles), Input/Textarea
+│   ├── ui/          # shared primitives: Card, Button (+ buttonStyles), Input/Textarea, SectionHeader
 │   ├── theme/       # ThemeProvider, theme-context (useTheme, variants), ThemeShowcase
-│   ├── layout/      # Header, Footer, Features, Components, Pricing, FAQ, AmbientBackground
-│   ├── hero/        # HeroSection (theme-driven background imagery)
+│   ├── layout/      # Header, Footer, HowItWorks, Features, Testimonials, Pricing, FAQ, CTABanner, AmbientBackground
+│   ├── hero/        # HeroSection + HeroDashboardPeek (theme-driven background imagery)
 │   └── dashboard/   # the interactive mockup: mail, analytics, projects, settings
 ├── data/            # demo email data
 ├── lib/             # cn() class helper, useMediaQuery
-└── index.css        # Tailwind theme tokens + the 7 theme palettes (OKLCH)
+└── index.css        # Tailwind theme tokens + the 8 theme palettes (OKLCH)
 ```
 
 ## Theming

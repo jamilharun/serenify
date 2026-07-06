@@ -7,6 +7,7 @@ import {
   type DarkVariant,
 } from "./theme-context";
 import { cn } from "../../lib/utils";
+import { SectionHeader } from "../ui/SectionHeader";
 
 const THEME_CARDS: {
   mode: ThemeMode;
@@ -56,6 +57,12 @@ const THEME_CARDS: {
     label: "Calming Rain",
     bg: "/images/bg_calming_rain.avif",
   },
+  {
+    mode: "dark",
+    variant: "forest",
+    label: "Midnight Forest",
+    bg: "/images/bg_midnight_forest.avif",
+  },
 ];
 
 export function ThemeShowcase() {
@@ -81,22 +88,20 @@ export function ThemeShowcase() {
   };
 
   return (
-    <section className="relative z-20 px-6 md:px-16 py-20 md:py-28">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-10">
-          <div>
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">
-              Theme Showcase
-            </h2>
-            <p className="text-foreground/50 mt-1">
-              Pick a mood — the whole page updates live.
-            </p>
-          </div>
+    <section id="themes" className="relative z-20 py-20 md:py-28">
+      <div className="max-w-6xl mx-auto px-6 md:px-16">
+        <div className="flex items-end justify-between gap-6 flex-wrap">
+          <SectionHeader
+            eyebrow="Themes"
+            title="Set the mood"
+            subtitle="Pick a mood — the whole page updates live."
+            className="mb-0"
+          />
 
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-full bg-card/60 backdrop-blur-md border border-primary/20 hover:bg-primary/20 transition-colors text-foreground font-medium"
+            className="flex-shrink-0 flex items-center gap-2 px-5 py-3 mb-1 rounded-full bg-card/60 backdrop-blur-md border border-primary/20 hover:bg-primary/20 transition-colors text-foreground font-medium"
           >
             {isDark ? (
               <Sun className="w-5 h-5" />
@@ -106,44 +111,45 @@ export function ThemeShowcase() {
             <span>{isDark ? "Light Mode" : "Dark Mode"}</span>
           </button>
         </div>
+      </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {THEME_CARDS.filter((card) => card.mode === (isDark ? "dark" : "light")).map((card) => {
-            const isSelected = isDark
-              ? card.mode === "dark" && card.variant === darkVariant
-              : card.mode === "light" && card.variant === lightVariant;
+      <div className="mt-6 flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 md:px-16 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:justify-center">
+        {THEME_CARDS.filter((card) => card.mode === (isDark ? "dark" : "light")).map((card) => {
+          const isSelected = isDark
+            ? card.mode === "dark" && card.variant === darkVariant
+            : card.mode === "light" && card.variant === lightVariant;
 
-            return (
-              <motion.button
-                key={card.label}
-                onClick={() => handleSelect(card.mode, card.variant)}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className={cn(
-                  "group relative aspect-[3/4] rounded-2xl overflow-hidden border-2 shadow-md transition-colors",
-                  isSelected
-                    ? "border-foreground shadow-lg"
-                    : "border-transparent hover:border-primary/40",
-                )}
-              >
-                <img
-                  src={card.bg}
-                  alt={card.label}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+          return (
+            <motion.button
+              key={card.label}
+              onClick={() => handleSelect(card.mode, card.variant)}
+              aria-pressed={isSelected}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className={cn(
+                "group relative aspect-[3/4] w-44 sm:w-52 md:w-60 flex-shrink-0 snap-start rounded-2xl overflow-hidden border-2 shadow-md transition-colors",
+                isSelected
+                  ? "border-foreground shadow-lg"
+                  : "border-transparent hover:border-primary/40",
+              )}
+            >
+              <img
+                src={card.bg}
+                alt={card.label}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-                <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-semibold drop-shadow-md text-left">
-                  {card.label}
-                </span>
+              <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-semibold drop-shadow-md text-left">
+                {card.label}
+              </span>
 
-                {isSelected && (
-                  <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-white shadow" />
-                )}
-              </motion.button>
-            );
-          })}
-        </div>
+              {isSelected && (
+                <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-white shadow" />
+              )}
+            </motion.button>
+          );
+        })}
       </div>
     </section>
   );

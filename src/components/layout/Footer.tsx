@@ -4,9 +4,10 @@ const LINK_COLUMNS = [
   {
     title: "Product",
     links: [
+      { label: "Live Demo", href: "#dashboard-mockup" },
+      { label: "Themes", href: "#themes" },
+      { label: "How it works", href: "#how-it-works" },
       { label: "Features", href: "#features" },
-      { label: "Components", href: "#components" },
-      { label: "Dashboard Preview", href: "#dashboard-mockup" },
       { label: "Pricing", href: "#pricing" },
     ],
   },
@@ -45,7 +46,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 pb-12 border-b border-primary/10">
           <div className="col-span-2">
             <span className="text-foreground font-semibold tracking-wide">Serenify</span>
-            <p className="text-sm text-foreground/50 mt-3 max-w-xs leading-relaxed">
+            <p className="text-sm text-foreground/60 mt-3 max-w-xs leading-relaxed">
               A calm, mood-themed dashboard that brings your email and your headspace into one focused view.
             </p>
           </div>
@@ -56,7 +57,7 @@ export function Footer() {
               <ul className="flex flex-col gap-2">
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-sm text-foreground/50 hover:text-foreground transition-colors">
+                    <a href={link.href} className="text-sm text-foreground/60 hover:text-foreground transition-colors">
                       {link.label}
                     </a>
                   </li>

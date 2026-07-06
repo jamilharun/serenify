@@ -3,6 +3,7 @@ import { Feather, Crown, Building2, Check } from "lucide-react"
 import { cn } from "../../lib/utils"
 import { Card } from "../ui/Card"
 import { Button } from "../ui/Button"
+import { SectionHeader } from "../ui/SectionHeader"
 
 const TIERS = [
   {
@@ -18,6 +19,7 @@ const TIERS = [
       "Community support",
     ],
     cta: "Get Started",
+    note: "Free forever. No credit card required.",
     highlighted: false,
   },
   {
@@ -27,13 +29,14 @@ const TIERS = [
     period: "/month",
     description: "For individuals who live in their dashboard.",
     features: [
-      "All 7 mood themes",
+      "All 8 mood themes",
       "Unlimited widgets",
       "Advanced analytics",
       "Compose & smart drafts",
       "Priority support",
     ],
     cta: "Start Free Trial",
+    note: "14-day trial. No credit card required.",
     highlighted: true,
   },
   {
@@ -50,6 +53,7 @@ const TIERS = [
       "SLA & priority support",
     ],
     cta: "Contact Sales",
+    note: "We reply within one business day.",
     highlighted: false,
   },
 ]
@@ -58,25 +62,27 @@ export function Pricing() {
   return (
     <section id="pricing" className="relative z-20 px-6 md:px-16 py-20 md:py-28">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold text-foreground tracking-tight">Pricing</h2>
-          <p className="text-foreground/50 mt-1">Choose the plan that fits your flow.</p>
-        </div>
+        <SectionHeader
+          align="center"
+          eyebrow="Pricing"
+          title="Choose the plan that fits your flow"
+          className="mb-12"
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-          {TIERS.map(({ icon: Icon, name, price, period, description, features, cta, highlighted }, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {TIERS.map(({ icon: Icon, name, price, period, description, features, cta, note, highlighted }, index) => (
             <motion.div
               key={name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className={cn(highlighted && "md:-mt-4")}
+              className="h-full"
             >
               <Card
                 className={cn(
                   "relative flex flex-col p-8 rounded-3xl h-full",
-                  highlighted && "bg-card/60 border-primary shadow-xl"
+                  highlighted && "bg-card/60 border-primary shadow-xl md:-mt-4 md:h-[calc(100%+2rem)]"
                 )}
               >
               {highlighted && (
@@ -112,6 +118,7 @@ export function Pricing() {
               >
                 {cta}
               </Button>
+              <p className="text-xs text-foreground/55 text-center mt-3">{note}</p>
               </Card>
             </motion.div>
           ))}

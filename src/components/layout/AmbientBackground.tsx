@@ -1,12 +1,24 @@
 import { motion, useScroll, useTransform } from "framer-motion"
+import { useMediaQuery } from "../../lib/useMediaQuery"
 
 export function AmbientBackground() {
+  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)")
   const { scrollYProgress } = useScroll()
 
   const yBlob1 = useTransform(scrollYProgress, [0, 1], [0, -350])
   const yBlob2 = useTransform(scrollYProgress, [0, 1], [0, 450])
   const yBlob3 = useTransform(scrollYProgress, [0, 1], [0, -250])
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 45])
+
+  if (prefersReducedMotion) {
+    return (
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-primary/25 blur-3xl" style={{ top: "-10%", left: "-10%" }} />
+        <div className="absolute w-[600px] h-[600px] rounded-full bg-accent/30 blur-3xl" style={{ bottom: "-15%", right: "-10%" }} />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-primary/15 blur-3xl" style={{ top: "45%", left: "45%" }} />
+      </div>
+    )
+  }
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">

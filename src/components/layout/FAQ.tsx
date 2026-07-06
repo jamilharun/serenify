@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import { cn } from "../../lib/utils"
 import { Card } from "../ui/Card"
+import { SectionHeader } from "../ui/SectionHeader"
 
 const FAQS = [
   {
@@ -37,10 +38,12 @@ export function FAQ() {
   return (
     <section id="faq" className="relative z-20 px-6 md:px-16 py-20 md:py-28">
       <div className="max-w-3xl mx-auto">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl font-bold text-foreground tracking-tight">Frequently Asked Questions</h2>
-          <p className="text-foreground/50 mt-1">Everything you might be wondering about Serenify.</p>
-        </div>
+        <SectionHeader
+          align="center"
+          eyebrow="FAQ"
+          title="Frequently asked questions"
+          subtitle="Everything you might be wondering about Serenify."
+        />
 
         <div className="flex flex-col gap-3">
           {FAQS.map((faq, index) => {
